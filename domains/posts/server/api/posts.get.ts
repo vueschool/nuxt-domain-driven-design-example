@@ -1,6 +1,7 @@
 import { faker } from "@faker-js/faker";
 import type { Post } from "@/domains/posts/types";
 export default defineEventHandler(async (event): Promise<Post[]> => {
+  const users = await $fetch("/api/users");
   const posts = [];
   const numOfUsers = 50;
 
@@ -10,6 +11,7 @@ export default defineEventHandler(async (event): Promise<Post[]> => {
       title: `Post ${index + 1}`,
       snippet: faker.lorem.paragraph(),
       content: faker.lorem.paragraphs(),
+      author: users[index],
     });
   }
   return posts;

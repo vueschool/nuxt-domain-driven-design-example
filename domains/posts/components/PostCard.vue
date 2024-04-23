@@ -6,8 +6,9 @@ defineProps<{
 }>();
 </script>
 <template>
-  <div>
-    <h2>{{ post.title }}</h2>
+  <div class="bg-gray-100 p-2 rounded mb-5">
+    <h2 class="text-lg font-bold">{{ post.title }}</h2>
+    <p>By {{ post.author?.name }}</p>
     <p>{{ post.snippet }}</p>
   </div>
 </template>
